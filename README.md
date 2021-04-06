@@ -1,5 +1,9 @@
 # LeagueRequest
+<<<<<<< HEAD
 [Tool under development - Development branch]
+=======
+[Tool under development]
+>>>>>>> 50c3cf87cae28cb0018b142a88b928092d927108
 LeagueRequest is a GUI tool that makes your League Client customization easier.
 
 ## How to run
