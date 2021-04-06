@@ -2,7 +2,6 @@ from requests import get, post, put, packages
 from base64 import b64encode
 import ctypes
 
-packages.urllib3.disable_warnings(packages.urllib3.exceptions.InsecureRequestWarning)
 
 def strToB64(str):
         return b64encode(str.encode('ascii')).decode('ascii')
@@ -27,7 +26,6 @@ def putRequest(protocol,ip,port,endpoint,data,header):
     return r
 
 def hideConsole():
-            
-            whnd = ctypes.windll.kernel32.GetConsoleWindow()
-            if whnd != 0:
-                ctypes.windll.user32.ShowWindow(whnd, 0) 
+    whnd = ctypes.windll.kernel32.GetConsoleWindow()
+    if whnd != 0:
+        ctypes.windll.user32.ShowWindow(whnd, 0) 

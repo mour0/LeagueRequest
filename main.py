@@ -44,14 +44,6 @@ class MainWindow(QMainWindow):
         
         self.ui.spinQueue.setCurrentIndex(0)
                 
-        
-        
-<<<<<<< HEAD
-        
-        
-=======
-        self.hideConsole()
->>>>>>> 6771c1fd546d4c805a64c46db5c039f5836744d9
 
         self.show()
         
@@ -285,13 +277,9 @@ class MainWindow(QMainWindow):
 
         p.exec_()
 
-<<<<<<< HEAD
+
 
             
-
-
-=======
->>>>>>> 6771c1fd546d4c805a64c46db5c039f5836744d9
 if __name__ == "__main__":
     app = QApplication(argv)
     
