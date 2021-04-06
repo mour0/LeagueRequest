@@ -26,8 +26,7 @@ class MainWindow(QMainWindow):
         if(self.ui.top_bar.underMouse()):
             delta = QPoint (event.globalPos() - self.oldPos)
             self.move(self.x() + delta.x(), self.y() + delta.y())
-            self.oldPos = event.globalPos() 
-
+            self.oldPos = event.globalPos()
 
     def __init__(self):
         super(MainWindow, self).__init__()
@@ -47,8 +46,12 @@ class MainWindow(QMainWindow):
                 
         
         
+<<<<<<< HEAD
         
         
+=======
+        self.hideConsole()
+>>>>>>> 6771c1fd546d4c805a64c46db5c039f5836744d9
 
         self.show()
         
@@ -101,7 +104,11 @@ class MainWindow(QMainWindow):
             # OFF
             self.ui.btnOffline.setText('Offline Status [OFF]')
             self.ui.btnOffline.setStyleSheet('background-color: #ff1a29;')
-        
+
+    def hideConsole(self):
+        whnd = ctypes.windll.kernel32.GetConsoleWindow()
+        if whnd != 0:
+            ctypes.windll.user32.ShowWindow(whnd, 0)
 
         
 
@@ -278,10 +285,13 @@ class MainWindow(QMainWindow):
 
         p.exec_()
 
+<<<<<<< HEAD
 
             
 
 
+=======
+>>>>>>> 6771c1fd546d4c805a64c46db5c039f5836744d9
 if __name__ == "__main__":
     app = QApplication(argv)
     
