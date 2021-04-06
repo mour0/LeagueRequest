@@ -12,7 +12,6 @@ from ui_main import Ui_MainWindow
 import os
 import ctypes
 from utils import getRequest,putRequest,postRequest,checkStatusSimple, strToB64, hideConsole
-import logging
 
 
 hideConsole()
@@ -44,6 +43,10 @@ class MainWindow(QMainWindow):
         
         self.ui.spinQueue.setCurrentIndex(0)
                 
+        
+        
+        
+        
 
         self.show()
         
@@ -96,11 +99,6 @@ class MainWindow(QMainWindow):
             # OFF
             self.ui.btnOffline.setText('Offline Status [OFF]')
             self.ui.btnOffline.setStyleSheet('background-color: #ff1a29;')
-
-    def hideConsole(self):
-        whnd = ctypes.windll.kernel32.GetConsoleWindow()
-        if whnd != 0:
-            ctypes.windll.user32.ShowWindow(whnd, 0)
 
         
 
@@ -278,8 +276,9 @@ class MainWindow(QMainWindow):
         p.exec_()
 
 
-
             
+
+
 if __name__ == "__main__":
     app = QApplication(argv)
     
