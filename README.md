@@ -4,7 +4,7 @@ LeagueRequest is a GUI tool that makes your League Client customization easier.
 
 ## How to run
 1. Download the latest version of Python3.
-2. Dowload PySide2, requests using pip.
+2. Dowload PySide2, requests using: ```pip install pyside2 requests```
 3. Run main.py
 
 ## What it does
