@@ -11,10 +11,11 @@ from socket import gethostbyname
 from ui_main import Ui_MainWindow
 import os
 import ctypes
-from utils import getRequest,putRequest,postRequest,checkStatusSimple, strToB64
+from utils import getRequest,putRequest,postRequest,checkStatusSimple, strToB64, hideConsole
+import logging
 
 
-
+hideConsole()
 
 class MainWindow(QMainWindow):
 
@@ -33,7 +34,6 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-
         #MainWindow
         self.setWindowFlag(Qt.FramelessWindowHint)
         #MainWindow
@@ -45,6 +45,7 @@ class MainWindow(QMainWindow):
         
         self.ui.spinQueue.setCurrentIndex(0)
                 
+        
         
         
         
@@ -278,9 +279,12 @@ class MainWindow(QMainWindow):
         p.exec_()
 
 
+            
+
+
 if __name__ == "__main__":
     app = QApplication(argv)
-
+    
     window = MainWindow()
 
     exit(app.exec_())

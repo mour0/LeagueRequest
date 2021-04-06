@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         font.setFamily(u"Roboto")
         MainWindow.setFont(font)
         icon = QIcon()
-        icon.addFile(u"LeagueRequest/Icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"Icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
