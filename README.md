@@ -4,7 +4,8 @@ LeagueRequest is a GUI tool that makes your League Client customization easier.
 
 ## How to run
 1. Download the latest version of Python3.
-2. Run main.py
+2. Dowload PySide2, requests using pip.
+3. Run main.py
 
 ## What it does
 The tool lets you change your:
@@ -15,7 +16,6 @@ The tool lets you change your:
 
 [Experimental]
 It also lets you:
-- Save your credentials and let you select the account to log-in with
 - Set offline mode
 - Create a custom Request with your Endpoint
 

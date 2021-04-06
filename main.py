@@ -1,11 +1,9 @@
-import sys
+from sys import argv, exit
 from PySide2.QtWidgets import QApplication, QMainWindow, QMessageBox 
-from PySide2.QtCore import QFile, QTimer, QObject, QThread, Qt, QPoint, QEvent
-from PySide2.QtUiTools import QUiLoader
+from PySide2.QtCore import Qt, QPoint
 from PySide2.QtGui import QIcon
-import base64
 from poorLCU import LCU 
-import json
+from json import dumps, loads, load, dump 
 
 import subprocess
 from socket import gethostbyname
@@ -19,7 +17,6 @@ from utils import getRequest,putRequest,postRequest,checkStatusSimple, strToB64
 
 
 class MainWindow(QMainWindow):
-    
 
     def mousePressEvent(self, event):
         self.oldPos = event.globalPos()
@@ -37,7 +34,9 @@ class MainWindow(QMainWindow):
         self.ui.setupUi(self)
 
 
+        #MainWindow
         self.setWindowFlag(Qt.FramelessWindowHint)
+        #MainWindow
         self.setAttribute(Qt.WA_TranslucentBackground)
 
 
@@ -45,7 +44,7 @@ class MainWindow(QMainWindow):
 
         
         self.ui.spinQueue.setCurrentIndex(0)
-        
+                
         
         
         
@@ -57,7 +56,7 @@ class MainWindow(QMainWindow):
         self.settings = self.lcu.connect()
         if(not self.settings):
             self.showPopup('Please start League','League is not running','Icon.ico')
-            sys.exit(-1)
+            exit(-1)
         self.auth = strToB64('riot:{}'.format(self.settings['auth']))
         self.header = {'Accept': 'application/json', 'Authorization': f'Basic {self.auth}'}
 
@@ -138,12 +137,12 @@ class MainWindow(QMainWindow):
         if(self.ui.spinIC.currentIndex() != 0):
             end = '/lol-summoner/v1/current-summoner/icon/'
             data = {"profileIconId": self.ui.spinIC.currentText()}
-            putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,json.dumps(data),self.header)
+            putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header)
 
     def setCustomIcon(self):
         end = "/lol-chat/v1/me/"
         data = {"icon": self.ui.txtCIC.text()}
-        putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,json.dumps(data),self.header)
+        putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header)
 
     # Division window functions
     def setDivision(self):
@@ -156,13 +155,13 @@ class MainWindow(QMainWindow):
                     "rankedLeagueDivision": f'{self.ui.spinDiv.currentText()}',
                 },
             }
-            putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,json.dumps(data),self.header)
+            putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header)
 
     # Status window functions
     def setStatus(self):
         end = '/lol-chat/v1/me/'
         data = {"statusMessage": f'{self.ui.txtStatus.toPlainText()}' }
-        putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,json.dumps(data,ensure_ascii=False).encode('utf-8'),self.header)
+        putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data,ensure_ascii=False).encode('utf-8'),self.header)
 
     # Background window functions
     def setBg(self):
@@ -171,12 +170,12 @@ class MainWindow(QMainWindow):
             'key': "backgroundSkinId",
             'value': self.ui.txtBg.text(),
         }
-        postRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,json.dumps(data),self.header)
+        postRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header)
 
 
     def _checkOffline(self,file='settings.json'):
         f = open(file,'r')
-        data = json.load(f)
+        data = load(f)
         f.close()
         return data['settings']['chatBlocked'] #1 On | #0 Off
 
@@ -196,7 +195,7 @@ class MainWindow(QMainWindow):
 
         end = '/riotclient/get_region_locale' 
         with open('settings.json','r') as f:
-            data = json.load(f)
+            data = load(f)
         
         if(data['settings']['chatBlocked']): # == 1
             subprocess.run(['netsh','advfirewall','firewall','delete','rule','name=\"lolchat\"'])
@@ -230,7 +229,7 @@ class MainWindow(QMainWindow):
             self.ui.btnOffline.setStyleSheet('background-color: #20ff5f;')
 
         with open('settings.json','w') as f:
-            json.dump(data,f)
+            dump(data,f)
 
     #Advanced
     def sendRequest(self):
@@ -241,11 +240,11 @@ class MainWindow(QMainWindow):
         else:
             data = self.ui.txtData.toPlainText()
             if(method == 'POST'):
-                resp = postRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,json.dumps(json.loads(data)),self.header)
+                resp = postRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(loads(data)),self.header)
             else: #PUT Request
-                resp = putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,json.dumps(json.loads(data)),self.header)
+                resp = putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(loads(data)),self.header)
 
-        self.ui.txtResp.setPlainText(json.dumps(resp.json()))
+        self.ui.txtResp.setPlainText(dumps(resp.json()))
         self.ui.txtCode.setText(str(resp.status_code))
 
 
@@ -280,8 +279,8 @@ class MainWindow(QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QApplication(sys.argv)
+    app = QApplication(argv)
 
     window = MainWindow()
 
-    sys.exit(app.exec_())
+    exit(app.exec_())

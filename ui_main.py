@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainwindowPEfCqy.ui'
+## Form generated from reading UI file 'ui_mainwindowcpoOui.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -29,7 +29,7 @@ class Ui_MainWindow(object):
         font.setFamily(u"Roboto")
         MainWindow.setFont(font)
         icon = QIcon()
-        icon.addFile(u"../LeagueRequest/Icon.ico", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"LeagueRequest/Icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -379,7 +379,8 @@ class Ui_MainWindow(object):
         self.spinnerMethod.setObjectName(u"spinnerMethod")
         self.spinnerMethod.setMinimumSize(QSize(100, 0))
         self.spinnerMethod.setMaximumSize(QSize(16777215, 25))
-        self.spinnerMethod.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.spinnerMethod.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
+"QComboBox::down-arrow { image: none; }")
         self.spinnerMethod.setEditable(False)
 
         self.horizontalLayout_13.addWidget(self.spinnerMethod)
