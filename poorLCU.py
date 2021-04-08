@@ -11,7 +11,7 @@ class LCU:
         self.name = None
 
     def connect(self):
-        inLogin = self.getPathFromExe()
+        inLogin = self.checkStatus('LeagueClientUx.exe')
         
         try:
             f = open(self.path+r'\lockfile','r')
@@ -29,21 +29,13 @@ class LCU:
     def checkStatus(self,process):
         temp = subprocess.run(['wmic','PROCESS','WHERE',f'name=\'{process}\'','GET','commandline'], capture_output= True, shell = True)
         if temp.stdout.decode('utf-8').strip():
-            b = re.search(r"[^\"](.*exe)",temp.stdout.decode('utf-8')).group(1)[1::].split('/')
-            self.path = f'{b[0]}/{b[1]}/League of Legends'
+            self.path = re.search(f'\"(.+){process}\"',temp.stdout.decode('utf-8')).group(1)
             self.port = re.search(r"--app-port=([0-9]*)",temp.stdout.decode('utf-8')).group(1)
             self.auth = re.search(r'--remoting-auth-token=(\S+)',temp.stdout.decode('utf-8')).group(1)
             return True
         else:
             return False
 
-    def getPathFromExe(self):
-        temp = self.checkStatus('RiotClientUx.exe')
-        if(temp is not False):
-            return True #Login
-        temp = self.checkStatus('leagueClientUx.exe')
-        if(temp is not False):
-            return False #sClient
 
 
         

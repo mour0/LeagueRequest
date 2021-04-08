@@ -1,6 +1,8 @@
 from requests import get, post, put, packages
 from base64 import b64encode
 import ctypes
+from os.path import exists
+import json
 
 
 def strToB64(str):
@@ -29,3 +31,16 @@ def hideConsole():
     whnd = ctypes.windll.kernel32.GetConsoleWindow()
     if whnd != 0:
         ctypes.windll.user32.ShowWindow(whnd, 0) 
+
+def writeFileIfNotExists(name,dataJson):
+    if not exists(name):
+        f = open(name,'w')
+        json.dump(dataJson,f)
+        f.close()
+
+
+
+
+
+
+

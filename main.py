@@ -11,10 +11,10 @@ from socket import gethostbyname
 from ui_main import Ui_MainWindow
 import os
 import ctypes
-from utils import getRequest,putRequest,postRequest,checkStatusSimple, strToB64, hideConsole
+from utils import getRequest,putRequest,postRequest,checkStatusSimple, strToB64, hideConsole, writeFileIfNotExists
 
 
-hideConsole()
+#hideConsole()
 
 class MainWindow(QMainWindow):
 
@@ -44,9 +44,7 @@ class MainWindow(QMainWindow):
         self.ui.spinQueue.setCurrentIndex(0)
                 
         
-        
-        
-        
+        writeFileIfNotExists('settings.json',{'settings': {'chatBlocked': 0}})
 
         self.show()
         
@@ -100,8 +98,6 @@ class MainWindow(QMainWindow):
             self.ui.btnOffline.setText('Offline Status [OFF]')
             self.ui.btnOffline.setStyleSheet('background-color: #ff1a29;')
 
-        
-
         # Buttons to navigate
         self.ui.gotoPage2.clicked.connect(self.gotoPage2)
         self.ui.gotoPage1.clicked.connect(self.gotoPage1)
@@ -119,8 +115,6 @@ class MainWindow(QMainWindow):
         self.ui.btnOffline.clicked.connect(self.setOffline)
 
         self.ui.btnSend.clicked.connect(self.sendRequest)
-
-
 
 
 
@@ -225,6 +219,7 @@ class MainWindow(QMainWindow):
             data['settings']['chatBlocked'] = 1
             self.ui.btnOffline.setText('Offline Status [ON]')
             self.ui.btnOffline.setStyleSheet('background-color: #20ff5f;')
+
 
         with open('settings.json','w') as f:
             dump(data,f)
