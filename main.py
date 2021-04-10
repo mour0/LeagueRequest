@@ -11,10 +11,8 @@ from socket import gethostbyname
 from ui_main import Ui_MainWindow
 import os
 import ctypes
-from utils import getRequest,putRequest,postRequest,checkStatusSimple, strToB64, hideConsole, writeFileIfNotExists
+from utils import getRequest,putRequest,postRequest,checkStatusSimple, strToB64, writeFileIfNotExists
 
-
-#hideConsole()
 
 class MainWindow(QMainWindow):
 
@@ -82,7 +80,7 @@ class MainWindow(QMainWindow):
         self.ui.spinIC.setCurrentIndex(0)
 
         #Methods
-        for i in ['Method','GET','POST','PUT']:
+        for i in ['GET','POST','PUT']:
             self.ui.spinnerMethod.addItem(i)
         self.ui.spinnerMethod.setCurrentIndex(0)
         self.ui.spinnerMethod.currentIndexChanged.connect(self.spinMethodChanged)
@@ -129,12 +127,12 @@ class MainWindow(QMainWindow):
         if(self.ui.spinIC.currentIndex() != 0):
             end = '/lol-summoner/v1/current-summoner/icon/'
             data = {"profileIconId": self.ui.spinIC.currentText()}
-            putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header)
+            putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header,self.showPopup)
 
     def setCustomIcon(self):
         end = "/lol-chat/v1/me/"
         data = {"icon": self.ui.txtCIC.text()}
-        putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header)
+        putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header,self.showPopup)
 
     # Division window functions
     def setDivision(self):
@@ -147,13 +145,13 @@ class MainWindow(QMainWindow):
                     "rankedLeagueDivision": f'{self.ui.spinDiv.currentText()}',
                 },
             }
-            putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header)
+            putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header,self.showPopup)
 
     # Status window functions
     def setStatus(self):
         end = '/lol-chat/v1/me/'
         data = {"statusMessage": f'{self.ui.txtStatus.toPlainText()}' }
-        putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data,ensure_ascii=False).encode('utf-8'),self.header)
+        putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data,ensure_ascii=False).encode('utf-8'),self.header,self.showPopup)
 
     # Background window functions
     def setBg(self):
@@ -162,7 +160,7 @@ class MainWindow(QMainWindow):
             'key': "backgroundSkinId",
             'value': self.ui.txtBg.text(),
         }
-        postRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header)
+        postRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(data),self.header,self.showPopup)
 
 
     def _checkOffline(self,file='settings.json'):
@@ -210,8 +208,7 @@ class MainWindow(QMainWindow):
                 'PH':'ph1.chat.si.riotgames.com',
                 'SG':'sg1.chat.si.riotgames.com',
                 'TH':'th1.chat.si.riotgames.com',
-                'TW':'tw1.chat.si.riotgames.com',
-                
+                'TW':'tw1.chat.si.riotgames.com',    
             }
 
             rec = getRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end, self.header) 
@@ -229,15 +226,15 @@ class MainWindow(QMainWindow):
         method = self.ui.spinnerMethod.currentText()
         end = self.ui.txtEndpoint.text()
         if(method == 'GET'):
-            resp = getRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,self.header) 
+            resp = getRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,self.header,self.showPopup) #TODO guardare se funziona
         else:
             data = self.ui.txtData.toPlainText()
             if(method == 'POST'):
-                resp = postRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(loads(data)),self.header)
+                resp = postRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(loads(data)),self.header,self.showPopup)
             else: #PUT Request
-                resp = putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(loads(data)),self.header)
+                resp = putRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,dumps(loads(data)),self.header,self.showPopup)
 
-        self.ui.txtResp.setPlainText(dumps(resp.json()))
+        self.ui.txtResp.setPlainText(dumps(resp.json(),indent=4))
         self.ui.txtCode.setText(str(resp.status_code))
 
 
