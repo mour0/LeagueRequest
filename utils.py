@@ -29,7 +29,7 @@ def getRequest(protocol,ip,port,endpoint,header,func=lambda a,b,c: None):
         sys.exit(-1)
 
 
-def postRequest(protocol,ip,port,endpoint,data,header):
+def postRequest(protocol,ip,port,endpoint,data,header,func=lambda a,b,c: None):
     try:
         r = post(f'{protocol}://{ip}:{port}{endpoint}', data=data,headers=header,verify=False)
         return r
@@ -37,7 +37,7 @@ def postRequest(protocol,ip,port,endpoint,data,header):
         func(_title,_desc,_icon)
         sys.exit(-1)
 
-def putRequest(protocol,ip,port,endpoint,data,header):
+def putRequest(protocol,ip,port,endpoint,data,header,func=lambda a,b,c: None):
     try:
         r = put(f'{protocol}://{ip}:{port}{endpoint}', data=data,headers=header,verify=False)
         return r

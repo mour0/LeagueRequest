@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'ui_mainwindowvzveAK.ui'
+## Form generated from reading UI file 'ui_mainwindowpayino.ui'
 ##
 ## Created by: Qt User Interface Compiler version 5.15.2
 ##
@@ -31,16 +31,58 @@ class Ui_MainWindow(object):
         icon = QIcon()
         icon.addFile(u"Icon.ico", QSize(), QIcon.Normal, QIcon.Off)
         MainWindow.setWindowIcon(icon)
+        MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
+        self.centralwidget.setStyleSheet(u"")
         self.horizontalLayout = QHBoxLayout(self.centralwidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.frame = QFrame(self.centralwidget)
         self.frame.setObjectName(u"frame")
-        self.frame.setStyleSheet(u"background-color: rgb(33, 33, 33);\n"
-"border-radius: 10px;\n"
+        self.frame.setStyleSheet(u"* {\n"
+"  background-color: rgb(33, 33, 33);\n"
+"  border-radius: 10px;\n"
+"}\n"
 "\n"
-"")
+"QLineEdit {\n"
+"background-color: rgb(255, 255, 255);\n"
+"}\n"
+"QLineEdit:focus {\n"
+"border: 2px solid black;\n"
+"}\n"
+"\n"
+"QComboBox {\n"
+"background-color: rgb(255, 255, 255);\n"
+"}\n"
+"QComboBox:focus {\n"
+"border: 2px solid black;\n"
+"}\n"
+"QComboBox QAbstractItemView {\n"
+"	background-color: rgb(255, 255, 255);\n"
+"}\n"
+"QComboBox QScrollBar {\n"
+"background-color: rgb(255, 255, 255);\n"
+"}\n"
+"QComboBox::drop-down \n"
+"{\n"
+"    border: 0px;\n"
+"}\n"
+"\n"
+"QPlainTextEdit {\n"
+"background-color: rgb(255, 255, 255);\n"
+"}\n"
+"QPlainTextEdit:focus {\n"
+"border: 2px solid black;\n"
+"}\n"
+"\n"
+"QPushButton {\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: rgb(22, 0, 61);\n"
+"	border: 1px solid white;\n"
+"}\n"
+"QPushButton:pressed {\n"
+"	border: 2px solid white;\n"
+"}")
         self.frame.setFrameShape(QFrame.StyledPanel)
         self.frame.setFrameShadow(QFrame.Raised)
         self.verticalLayout = QVBoxLayout(self.frame)
@@ -129,7 +171,7 @@ class Ui_MainWindow(object):
         self.mid_bar.setObjectName(u"mid_bar")
         self.mid_bar.setEnabled(True)
         self.mid_bar.setMaximumSize(QSize(16777215, 760))
-        self.mid_bar.setStyleSheet(u"background-color: none;")
+        self.mid_bar.setStyleSheet(u"")
         self.mid_bar.setFrameShape(QFrame.StyledPanel)
         self.mid_bar.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_2 = QHBoxLayout(self.mid_bar)
@@ -137,9 +179,10 @@ class Ui_MainWindow(object):
         self.stackedWidget = QStackedWidget(self.mid_bar)
         self.stackedWidget.setObjectName(u"stackedWidget")
         self.stackedWidget.setMinimumSize(QSize(0, 0))
-        self.stackedWidget.setStyleSheet(u"background-color: transparent;")
+        self.stackedWidget.setStyleSheet(u"")
         self.page = QWidget()
         self.page.setObjectName(u"page")
+        self.page.setStyleSheet(u"")
         self.verticalLayout_4 = QVBoxLayout(self.page)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.statusFrame = QFrame(self.page)
@@ -167,7 +210,7 @@ class Ui_MainWindow(object):
         font2.setFamily(u"Roboto Medium")
         font2.setPointSize(9)
         self.txtStatus.setFont(font2)
-        self.txtStatus.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.txtStatus.setStyleSheet(u"")
         self.txtStatus.setCenterOnScroll(False)
 
         self.verticalLayout_3.addWidget(self.txtStatus)
@@ -176,9 +219,7 @@ class Ui_MainWindow(object):
         self.btnStatus.setObjectName(u"btnStatus")
         self.btnStatus.setMinimumSize(QSize(0, 25))
         self.btnStatus.setMaximumSize(QSize(16777215, 25))
-        self.btnStatus.setStyleSheet(u"background-color: rgb(22, 0, 61);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid white;")
+        self.btnStatus.setStyleSheet(u"")
 
         self.verticalLayout_3.addWidget(self.btnStatus)
 
@@ -204,7 +245,7 @@ class Ui_MainWindow(object):
         self.txtBg.setSizePolicy(sizePolicy1)
         self.txtBg.setMinimumSize(QSize(500, 25))
         self.txtBg.setMaximumSize(QSize(16777215, 16777215))
-        self.txtBg.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.txtBg.setStyleSheet(u"")
         self.txtBg.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_10.addWidget(self.txtBg)
@@ -213,9 +254,7 @@ class Ui_MainWindow(object):
         self.btnBg.setObjectName(u"btnBg")
         self.btnBg.setMinimumSize(QSize(100, 25))
         self.btnBg.setMaximumSize(QSize(100, 25))
-        self.btnBg.setStyleSheet(u"background-color: rgb(22, 0, 61);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid white;")
+        self.btnBg.setStyleSheet(u"")
 
         self.horizontalLayout_10.addWidget(self.btnBg)
 
@@ -237,8 +276,7 @@ class Ui_MainWindow(object):
         font3 = QFont()
         font3.setFamily(u"Roboto Medium")
         self.spinIC.setFont(font3)
-        self.spinIC.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"")
+        self.spinIC.setStyleSheet(u"")
         self.spinIC.setEditable(False)
 
         self.horizontalLayout_7.addWidget(self.spinIC)
@@ -247,9 +285,7 @@ class Ui_MainWindow(object):
         self.btnIC.setObjectName(u"btnIC")
         self.btnIC.setMinimumSize(QSize(100, 25))
         self.btnIC.setMaximumSize(QSize(100, 25))
-        self.btnIC.setStyleSheet(u"background-color: rgb(22, 0, 61);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid white;")
+        self.btnIC.setStyleSheet(u"")
 
         self.horizontalLayout_7.addWidget(self.btnIC)
 
@@ -269,7 +305,7 @@ class Ui_MainWindow(object):
         self.txtCIC.setSizePolicy(sizePolicy1)
         self.txtCIC.setMinimumSize(QSize(500, 25))
         self.txtCIC.setMaximumSize(QSize(500, 25))
-        self.txtCIC.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.txtCIC.setStyleSheet(u"")
         self.txtCIC.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_8.addWidget(self.txtCIC)
@@ -278,9 +314,7 @@ class Ui_MainWindow(object):
         self.btnCIC.setObjectName(u"btnCIC")
         self.btnCIC.setMinimumSize(QSize(100, 25))
         self.btnCIC.setMaximumSize(QSize(100, 25))
-        self.btnCIC.setStyleSheet(u"background-color: rgb(22, 0, 61);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid white;")
+        self.btnCIC.setStyleSheet(u"")
 
         self.horizontalLayout_8.addWidget(self.btnCIC)
 
@@ -304,30 +338,28 @@ class Ui_MainWindow(object):
         self.spinQueue = QComboBox(self.frame_2)
         self.spinQueue.setObjectName(u"spinQueue")
         self.spinQueue.setMaximumSize(QSize(16777215, 25))
-        self.spinQueue.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.spinQueue.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.spinQueue)
 
         self.spinTier = QComboBox(self.frame_2)
         self.spinTier.setObjectName(u"spinTier")
         self.spinTier.setMaximumSize(QSize(16777215, 25))
-        self.spinTier.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.spinTier.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.spinTier)
 
         self.spinDiv = QComboBox(self.frame_2)
         self.spinDiv.setObjectName(u"spinDiv")
         self.spinDiv.setMaximumSize(QSize(16777215, 25))
-        self.spinDiv.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.spinDiv.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.spinDiv)
 
         self.btnDiv = QPushButton(self.frame_2)
         self.btnDiv.setObjectName(u"btnDiv")
         self.btnDiv.setMaximumSize(QSize(16777215, 25))
-        self.btnDiv.setStyleSheet(u"background-color: rgb(22, 0, 61);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid white;")
+        self.btnDiv.setStyleSheet(u"")
 
         self.verticalLayout_2.addWidget(self.btnDiv)
 
@@ -354,9 +386,7 @@ class Ui_MainWindow(object):
         self.btnOffline = QPushButton(self.frame_9)
         self.btnOffline.setObjectName(u"btnOffline")
         self.btnOffline.setMinimumSize(QSize(0, 25))
-        self.btnOffline.setStyleSheet(u"background-color: rgb(22, 0, 61);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid white;")
+        self.btnOffline.setStyleSheet(u"")
 
         self.verticalLayout_11.addWidget(self.btnOffline)
 
@@ -379,8 +409,7 @@ class Ui_MainWindow(object):
         self.spinnerMethod.setObjectName(u"spinnerMethod")
         self.spinnerMethod.setMinimumSize(QSize(100, 0))
         self.spinnerMethod.setMaximumSize(QSize(16777215, 25))
-        self.spinnerMethod.setStyleSheet(u"background-color: rgb(255, 255, 255);\n"
-"QComboBox::down-arrow { image: none; }")
+        self.spinnerMethod.setStyleSheet(u"")
         self.spinnerMethod.setEditable(False)
 
         self.horizontalLayout_13.addWidget(self.spinnerMethod)
@@ -389,7 +418,7 @@ class Ui_MainWindow(object):
         self.txtEndpoint.setObjectName(u"txtEndpoint")
         self.txtEndpoint.setMinimumSize(QSize(0, 25))
         self.txtEndpoint.setMaximumSize(QSize(16777215, 25))
-        self.txtEndpoint.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.txtEndpoint.setStyleSheet(u"")
         self.txtEndpoint.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_13.addWidget(self.txtEndpoint)
@@ -408,13 +437,13 @@ class Ui_MainWindow(object):
         self.txtData = QPlainTextEdit(self.frame_11)
         self.txtData.setObjectName(u"txtData")
         self.txtData.setMaximumSize(QSize(16777215, 16777215))
-        self.txtData.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.txtData.setStyleSheet(u"")
 
         self.horizontalLayout_9.addWidget(self.txtData)
 
         self.txtResp = QPlainTextEdit(self.frame_11)
         self.txtResp.setObjectName(u"txtResp")
-        self.txtResp.setStyleSheet(u"background-color: rgb(255, 255, 255);")
+        self.txtResp.setStyleSheet(u"")
 
         self.horizontalLayout_9.addWidget(self.txtResp)
 
@@ -432,18 +461,18 @@ class Ui_MainWindow(object):
         self.btnSend = QPushButton(self.frame_12)
         self.btnSend.setObjectName(u"btnSend")
         self.btnSend.setMinimumSize(QSize(0, 25))
-        self.btnSend.setStyleSheet(u"background-color: rgb(22, 0, 61);\n"
-"color: rgb(255, 255, 255);\n"
-"border: 1px solid white;")
+        self.btnSend.setStyleSheet(u"")
 
         self.horizontalLayout_12.addWidget(self.btnSend)
 
         self.txtCode = QLabel(self.frame_12)
         self.txtCode.setObjectName(u"txtCode")
         self.txtCode.setMaximumSize(QSize(100, 25))
-        self.txtCode.setStyleSheet(u"background-color: rgb(22, 0, 61);\n"
+        self.txtCode.setStyleSheet(u"QLabel {\n"
+"background-color: rgb(22, 0, 61);\n"
 "color: rgb(255, 255, 255);\n"
-"border: 1px solid white;")
+"border: 1px solid white;\n"
+"}")
         self.txtCode.setAlignment(Qt.AlignCenter)
 
         self.horizontalLayout_12.addWidget(self.txtCode)
@@ -464,7 +493,7 @@ class Ui_MainWindow(object):
         self.bot_bar.setSizePolicy(sizePolicy)
         self.bot_bar.setMinimumSize(QSize(0, 40))
         self.bot_bar.setMaximumSize(QSize(16777215, 40))
-        self.bot_bar.setStyleSheet(u"background-color: rgb(22, 0, 61);")
+        self.bot_bar.setStyleSheet(u"")
         self.bot_bar.setFrameShape(QFrame.StyledPanel)
         self.bot_bar.setFrameShadow(QFrame.Raised)
         self.bot_bar.setLineWidth(1)
@@ -476,8 +505,7 @@ class Ui_MainWindow(object):
         self.gotoPage1.setObjectName(u"gotoPage1")
         self.gotoPage1.setMinimumSize(QSize(0, 40))
         self.gotoPage1.setFont(font2)
-        self.gotoPage1.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: transparent;")
+        self.gotoPage1.setStyleSheet(u"")
 
         self.horizontalLayout_3.addWidget(self.gotoPage1)
 
@@ -495,9 +523,7 @@ class Ui_MainWindow(object):
         self.gotoPage2.setObjectName(u"gotoPage2")
         self.gotoPage2.setMinimumSize(QSize(0, 40))
         self.gotoPage2.setFont(font2)
-        self.gotoPage2.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"\n"
-"")
+        self.gotoPage2.setStyleSheet(u"")
 
         self.horizontalLayout_3.addWidget(self.gotoPage2)
 
@@ -519,8 +545,7 @@ class Ui_MainWindow(object):
         font4.setBold(False)
         font4.setWeight(50)
         self.gotoAdvanced.setFont(font4)
-        self.gotoAdvanced.setStyleSheet(u"color: rgb(255, 255, 255);\n"
-"background-color: transparent;")
+        self.gotoAdvanced.setStyleSheet(u"")
 
         self.horizontalLayout_3.addWidget(self.gotoAdvanced)
 

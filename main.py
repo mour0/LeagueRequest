@@ -40,7 +40,7 @@ class MainWindow(QMainWindow):
 
         
         self.ui.spinQueue.setCurrentIndex(0)
-                
+        self.ui.txtData.setVisible(False)
         
         writeFileIfNotExists('settings.json',{'settings': {'chatBlocked': 0}})
 
@@ -62,7 +62,7 @@ class MainWindow(QMainWindow):
         
         # ComboBox(Spinners) Setup
         #Division
-        for i in ['Select a Queue','RANKED_SOLO_5x5','RANKED_TFT','RANKED_TEAM_5x5']:
+        for i in ['Select a Queue','RANKED_SOLO_5x5','RANKED_TFT']:
             self.ui.spinQueue.addItem(i)
         self.ui.spinQueue.setCurrentIndex(0)
         
@@ -226,7 +226,7 @@ class MainWindow(QMainWindow):
         method = self.ui.spinnerMethod.currentText()
         end = self.ui.txtEndpoint.text()
         if(method == 'GET'):
-            resp = getRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,self.header,self.showPopup) #TODO guardare se funziona
+            resp = getRequest(self.settings['protocol'],'127.0.0.1',self.settings['port'],end,self.header,self.showPopup)
         else:
             data = self.ui.txtData.toPlainText()
             if(method == 'POST'):
@@ -250,7 +250,7 @@ class MainWindow(QMainWindow):
         self.ui.stackedWidget.setCurrentIndex(2)
 
     def spinMethodChanged(self):
-        if self.ui.spinnerMethod.currentIndex()==1:
+        if self.ui.spinnerMethod.currentIndex()==0:
             self.ui.txtData.setVisible(False)
         else:
             self.ui.txtData.setVisible(True)
